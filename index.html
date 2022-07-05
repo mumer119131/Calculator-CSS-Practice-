@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="calculator__container">
+        <div class="cal__display">
+          <div class="cal__display__calculations">0</div>
+          <div class="cal__display__result">0</div>
+        </div>
+        <div class="cal__buttons">
+          <div class="cal__button primary_btn" onclick="keyPressed(this)">
+            C
+          </div>
+          <div class="cal__button" onclick="keyPressed(this)">+/-</div>
+          <div class="cal__button" onclick="keyPressed(this)">%</div>
+          <div class="cal__button" onclick="keyPressed(this)">/</div>
+          <div class="cal__button" onclick="keyPressed(this)">1</div>
+          <div class="cal__button" onclick="keyPressed(this)">2</div>
+          <div class="cal__button" onclick="keyPressed(this)">3</div>
+          <div class="cal__button" onclick="keyPressed(this)">*</div>
+          <div class="cal__button" onclick="keyPressed(this)">4</div>
+          <div class="cal__button" onclick="keyPressed(this)">5</div>
+          <div class="cal__button" onclick="keyPressed(this)">6</div>
+          <div class="cal__button" onclick="keyPressed(this)">-</div>
+          <div class="cal__button" onclick="keyPressed(this)">7</div>
+          <div class="cal__button" onclick="keyPressed(this)">8</div>
+          <div class="cal__button" onclick="keyPressed(this)">9</div>
+          <div class="cal__button" onclick="keyPressed(this)">+</div>
+          <div class="cal__button" onclick="keyPressed(this)">00</div>
+          <div class="cal__button" onclick="keyPressed(this)">0</div>
+          <div class="cal__button" onclick="keyPressed(this)">,</div>
+          <div class="cal__button primary_btn" onclick="keyPressed(this)">
+            =
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const cal_display = document.querySelector(".cal__display__calculations");
+      const cal_display_result = document.querySelector(
+        ".cal__display__result"
+      );
+      var current_result = 0;
+      const keyPressed = (ele) => {
+        ele_text = ele.textContent.trim();
+        console.log(ele_text);
+        if (ele_text === "C") {
+          cal_display.innerHTML = "";
+          current_result = 0;
+          return;
+        } else if (ele_text === "=") {
+          console.log(cal_display.innerHTML);
+          new_result = eval(cal_display.innerHTML);
+          if (new_result === current_result) {
+            cal_display.innerHTML = current_result;
+            return;
+          } else {
+            current_result = new_result;
+          }
+          cal_display_result.innerHTML = current_result;
+          return;
+        }
+        cal_display.innerHTML += ele_text;
+      };
+    </script>
+  </body>
+</html>
